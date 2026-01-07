@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Test Suite by Group">
+
+    <test name="Selenium Tests">
+
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="UI"/>-->
+<!--                <exclude name="function"/>-->
+<!--            </run>-->
+<!--        </groups>-->
+
+        <classes>
+            <class name="tests.login.LoginTest"/>
+            <class name="tests.logout.LogoutTest"/>
+        </classes>
+    </test>
+
+</suite>
