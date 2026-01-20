@@ -50,9 +50,9 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void inputValidData() {
-        registerPage.inputUsername("Nguyễn Đăng Duyyyyy");
-        registerPage.inputEmail("trandangduy144444@gmail.com");
-        registerPage.inputPassword("xanhlacay22222");
+        registerPage.inputUsername("Nguyễn Đăng Duyyyyyy");
+        registerPage.inputEmail("trandangduy1444444@gmail.com");
+        registerPage.inputPassword("xanhlacay222222");
         registerPage.clickRegisterButton();
         Assert.assertTrue(registerPage.isRegisterSuccess(), "An error occured while registering");
     }
