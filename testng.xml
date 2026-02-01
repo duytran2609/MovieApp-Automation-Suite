@@ -25,7 +25,9 @@
 <!--            <class name="tests.movie.GetHomeMovieTest"/>-->
 <!--            <class name="tests.movie.GetMovieListTest"/>-->
 <!--            <class name="tests.movie.SeeMovieDetailsTest"/>-->
-            <class name="tests.movie.SearchMovie"/>
+<!--            <class name="tests.movie.SearchMovie"/>-->
+            <class name="tests.movie.GetMovieByCategory"/>
+
 
 
         </classes>

@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -23,8 +24,10 @@ public class MoviePage extends BasePage {
     private By txtMovieTitle = By.cssSelector(".movie-title");
     private By txtMovieYear = By.cssSelector(".movie-meta");
 
-    private By txtNoMovieFound = By.xpath("//*[@id=\"root\"]/div/div/div[2]/h2");
+    private By dropdownMovieCategory = By.cssSelector(".filter-select");
+    private By optionDropdown = By.cssSelector(".filter-select");
 
+    private By txtNoMovieFound = By.xpath("//*[@id=\"root\"]/div/div/div[2]/h2");
 
     public MoviePage(WebDriver driver) {
         super(driver);
@@ -43,8 +46,6 @@ public class MoviePage extends BasePage {
     public int getNumberOfMovies() {
         return getMovies().size();
     }
-
-
 
     private WebElement getFirstMovie() {
         return getMovies().get(0);
@@ -66,7 +67,7 @@ public class MoviePage extends BasePage {
         return getFirstMovie().findElement(txtMovieYear).isDisplayed();
     }
 
-    // ===== MOVIE =====
+    // ===== MOVIE LIST =====
     public void searchMovie(String keyword) {
         type(iptMovie, keyword);
     }
@@ -94,4 +95,40 @@ public class MoviePage extends BasePage {
         String hrefPart = driver.findElement(crdMovies).getAttribute("href");
         return wait.until(ExpectedConditions.urlContains(hrefPart));
     }
+
+    // ===== MOVIE CATEGORY DROPDOWN =====
+    public boolean isMovieCategoryDropdownActive() {
+        return isDisplayed(dropdownMovieCategory) && isEnabled(dropdownMovieCategory);
+    }
+
+    public List<String> getAllCategories() {
+        Select dropdown = new Select(driver.findElement(dropdownMovieCategory));
+        List<WebElement> options = dropdown.getOptions();
+        return options.stream()
+                    .map(e -> e.getText().trim())
+                    .toList();
+    }
+
+    public String getCategoryDropdownOption(String category) {
+        String optionSelected = "";
+        click(dropdownMovieCategory);
+        Select dropdown = new Select(driver.findElement(dropdownMovieCategory));
+        List<WebElement> options = dropdown.getOptions();
+        for (WebElement option : options) {
+            if (option.getText().trim().equals(category)) {
+                option.click();
+                optionSelected = option.getText();
+            }
+        }
+        return optionSelected;
+    }
+
+//    public void selectCategory() {
+//        Select dropdown = new Select(driver.findElement(drpMovieCategory));
+//        List<WebElement> options = dropdown.getOptions();
+//        for (WebElement option : options) {
+//            String value = option.getText().trim();
+//        }
+//    }
+
 }
