@@ -9,7 +9,7 @@ import pages.LoginPage;
 import pages.MovieDetailsPage;
 import pages.MoviePage;
 
-public class GetMovieListTest extends BaseTest {
+public class GetMovieList extends BaseTest {
 
     public LoginPage loginPage;
     public HomePage homePage;
@@ -25,7 +25,7 @@ public class GetMovieListTest extends BaseTest {
 
     // ===== NAVIGATION =====
     @Test
-    public void shouldNavigateViaHomePageHeader() {
+    public void testNavigateViaHomePageHeader() {
         if (homePage.headerComponent.isMovieActive()) {
             moviePage = homePage.headerComponent.navigateToMoviePage();
         }
@@ -33,7 +33,7 @@ public class GetMovieListTest extends BaseTest {
     }
 
     @Test
-    public void shouldNavigateViaMovieDetailsPageHeader() {
+    public void testNavigateViaMovieDetailsPageHeader() {
         homePage.navigateToMovieDetailsPage();
         movieDetailsPage = new MovieDetailsPage(driver);
         if (movieDetailsPage.headerComponent.isMovieActive()) {
@@ -43,7 +43,7 @@ public class GetMovieListTest extends BaseTest {
     }
 
     @Test
-    public void shouldNavigateViaExploreButton() {
+    public void testNavigateViaExploreButton() {
         if (homePage.isExploreTextActive()) {
             moviePage = homePage.navigateToMoviePageByExploreText();
         }
@@ -51,7 +51,7 @@ public class GetMovieListTest extends BaseTest {
     }
 
     @Test
-    public void shouldNavigateViaViewAllText() {
+    public void testNavigateViaViewAllText() {
         if (homePage.isViewAllActive()) {
             moviePage = homePage.navigateToMoviePageByViewAllText();
         }

@@ -17,7 +17,7 @@ public class SearchMovie extends BaseTest {
     private MoviePage moviePage;
 
     @BeforeMethod
-    public void setUpSeeMovieDetailsTest() {
+    public void setUpSearchMovieTest() {
         driver.get("https://movie-project-front-end.vercel.app/login");
         loginPage = new LoginPage(driver);
         homePage = loginPage.login("trandangduy13@gmail.com", "xanhlacay1");
@@ -25,29 +25,29 @@ public class SearchMovie extends BaseTest {
     }
 
     @Test
-    public void shouldSearchWithValidResult() {
+    public void testSearchWithValidResult() {
         String keyword = "lego";
         moviePage.searchMovie(keyword);
         List<String> titles = moviePage.getAllMovieTitles();
         Assert.assertTrue(titles.stream().anyMatch(t -> t.contains(keyword))
-                , "Không có movie nào chứa keyword"
+                , "No movie includes this keyword"
         );
     }
 
     @Test
-    public void shouldSearchWithInvalidResult() {
+    public void testSearchWithInvalidResult() {
         String keyword = "dsbdbjsajdkjdbsj";
         moviePage.searchMovie(keyword);
-        Assert.assertEquals(moviePage.getNoMovieFoundMessage(), "Không tìm thấy phim nào"
+        Assert.assertEquals(moviePage.getNoMovieFoundMessage(), "Movie not found"
         );
     }
 
     @Test
-    public void shouldSearchWithLeadingWhiteSpace() {
+    public void testSearchWithLeadingWhiteSpace() {
         String keyword = " leg";
         moviePage.searchMovie(keyword);
         Assert.assertTrue(moviePage.getAllMovieTitles().size() > 0
-                , "Search với space đầu không ra kết quả"
+                , "Search with whitt space did not find any movies"
         );
     }
 

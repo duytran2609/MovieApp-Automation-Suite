@@ -17,7 +17,7 @@ public class LogoutTest extends BaseTest {
     private MoviePage moviePage;
 
     @BeforeMethod
-    public void setUpLogout() {
+    public void setUpLogoutTest() {
         driver.get("https://movie-project-front-end.vercel.app/login");
         loginPage = new LoginPage(driver);
         homePage = loginPage.login("trandangduy13@gmail.com", "xanhlacay1");
@@ -25,7 +25,7 @@ public class LogoutTest extends BaseTest {
     }
 
     @Test
-    public void logoutFromHomePage() {
+    public void testLogoutFromHomePage() {
         if (homePage.headerComponent.isLogoutActive()) {
             try {
                 homePage.headerComponent.logout();
@@ -37,7 +37,7 @@ public class LogoutTest extends BaseTest {
     }
 
     @Test
-    public void logoutFromMoviePage() {
+    public void testLogoutFromMoviePage() {
         homePage.headerComponent.navigateToMoviePage();
         moviePage = new MoviePage(driver);
         if (moviePage.headerComponent.isLogoutActive()) {

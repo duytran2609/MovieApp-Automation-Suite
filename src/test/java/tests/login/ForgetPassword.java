@@ -8,13 +8,13 @@ import org.testng.annotations.Test;
 import pages.ForgetPasswordPage;
 import pages.LoginPage;
 
-public class ForgetPasswordTest extends BaseTest {
+public class ForgetPassword extends BaseTest {
 
     private LoginPage loginPage;
     private ForgetPasswordPage forgetPasswordPage;
 
     @BeforeMethod
-    public void setUpFlow() {
+    public void setUpForgetPasswordTest() {
         log.info("Open login page");
         driver.get("https://movie-project-front-end.vercel.app/login");
         loginPage = new LoginPage(driver);
@@ -33,14 +33,14 @@ public class ForgetPasswordTest extends BaseTest {
     }
 
     @Test
-    public void inputValidEmail() {
+    public void testInputValidEmail() {
         forgetPasswordPage.inputEmail("trandangduy13@gmail.com");
         forgetPasswordPage.clickSendButton();
         Assert.assertTrue(forgetPasswordPage.isSendSuccess(), "Submit button vẫn còn hiển thị, request có thể chưa gửi thành công");
     }
 
-    @Test(dataProvider = "emailData", dependsOnMethods = {"inputValidEmail"})
-    public void inputInvalidEmail(String email) {
+    @Test(dataProvider = "emailData", dependsOnMethods = {"testInputValidEmail"})
+    public void testInputInvalidEmail(String email) {
         forgetPasswordPage.inputEmail(email);
         forgetPasswordPage.clickSendButton();
         Assert.assertTrue(forgetPasswordPage.isSendSuccess(), "Submit button vẫn còn hiển thị, request có thể chưa gửi thành công");

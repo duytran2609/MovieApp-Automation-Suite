@@ -14,7 +14,7 @@ import pages.MoviePage;
 
 import java.util.List;
 
-public class GetMovieByCategory extends BaseTest {
+public class GetMovieByType extends BaseTest {
 
     private LoginPage loginPage;
     private HomePage homePage;
@@ -22,15 +22,15 @@ public class GetMovieByCategory extends BaseTest {
     private HeaderComponent headerComponent;
 
     @BeforeMethod
-    public void setUpGetMovieList() {
+    public void setUpGetMovieByTypeTest() {
         driver.get("https://movie-project-front-end.vercel.app/login");
         loginPage = new LoginPage(driver);
         homePage = loginPage.login("trandangduy13@gmail.com", "xanhlacay1");
         moviePage = homePage.headerComponent.navigateToMoviePage();
     }
 
-    @DataProvider(name = "dropdownData")
-    public Object[][] categoryData() {
+    @DataProvider(name = "movieTypeData")
+    public Object[][] movieTypeData() {
         return new Object[][] {
                 {null, "Tất cả loại"},
                 {"movie", "Phim lẻ"},
@@ -39,19 +39,19 @@ public class GetMovieByCategory extends BaseTest {
     }
 
     @Test
-    public void testDisplayMovieCategoryDropdown() {
+    public void testDisplayMovieTypeDropdown() {
         moviePage = new MoviePage(driver);
-        Assert.assertTrue(moviePage.isMovieTypeDropdownActive(), "Movie category dropdown is not active");
+        Assert.assertTrue(moviePage.isMovieTypeDropdownActive(), "Movie type dropdown is not active");
     }
 
     @Test
-    public void testSelectedDropdownText(String category) {
-        String optionSelected = moviePage.getTypeDropdownOption(category);
-        Assert.assertEquals(optionSelected, category, "Not true");
+    public void testSelectedDropdownText(String type) {
+        String optionSelected = moviePage.getTypeDropdownOption(type);
+        Assert.assertEquals(optionSelected, type, "Movie type is not equal");
     }
 
-    @Test(dataProvider = "dropdownData")
-    public void testFilterMovieCategory(String apiType, String uiType) {
+    @Test(dataProvider = "movieTypeData")
+    public void testFilterMovieType(String apiType, String uiType) {
         MovieAPI movieAPI = new MovieAPI();
         Response response = movieAPI.getMoviesByType(apiType);
         List<String> getApiTitles = response.then()

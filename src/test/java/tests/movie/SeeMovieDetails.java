@@ -10,7 +10,7 @@ import pages.LoginPage;
 import pages.MovieDetailsPage;
 import pages.MoviePage;
 
-public class SeeMovieDetailsTest extends BaseTest {
+public class SeeMovieDetails extends BaseTest {
 
     private LoginPage loginPage;
     private HomePage homePage;
@@ -27,13 +27,13 @@ public class SeeMovieDetailsTest extends BaseTest {
 
     // ===== NAVIGATION =====
     @Test
-    public void shouldNavigateToMovieDetailsPageViaHomePage() {
+    public void testNavigateToMovieDetailsPageViaHomePage() {
         movieDetailsPage = homePage.navigateToMovieDetailsPage();
         Assert.assertTrue(homePage.isNavigateToMovieDetailsPage(), "Cannot navigate to movie details page");
     }
 
     @Test
-    public void shouldNavigateToMovieDetailsPageViaMoviePage() {
+    public void testNavigateToMovieDetailsPageViaMoviePage() {
         moviePage = homePage.headerComponent.navigateToMoviePage();
         movieDetailsPage = moviePage.navigateToMovieDetailsPage();
         Assert.assertTrue(moviePage.isNavigateToMovieDetailsPage(), "Cannot navigate to movie details page");
@@ -41,7 +41,7 @@ public class SeeMovieDetailsTest extends BaseTest {
 
     // ===== CHECKING =====
     @Test
-    public void isMovieInformationEquals() {
+    public void testMovieInformationEquals() {
         moviePage = homePage.headerComponent.navigateToMoviePage();
         movieDetailsPage = moviePage.navigateToMovieDetailsPage();
         Assert.assertTrue(moviePage.isNavigateToMovieDetailsPage(), "Cannot navigate to movie details page");

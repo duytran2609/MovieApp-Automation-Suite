@@ -8,25 +8,25 @@ import org.testng.asserts.SoftAssert;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class GetHomeMovieTest extends BaseTest {
+public class GetHomeMovie extends BaseTest {
     private LoginPage loginPage;
     private HomePage homePage;
 
     @BeforeMethod
-    public void setUpGetMovieList() {
+    public void setUpGetHomeMovieTest() {
         driver.get("https://movie-project-front-end.vercel.app/login");
         loginPage = new LoginPage(driver);
         homePage = loginPage.login("trandangduy13@gmail.com", "xanhlacay1");
     }
 
     @Test
-    public void countMovie() {
+    public void testMovieNumber() {
         int totalMovie = homePage.getNumberOfMovies();
         Assert.assertEquals(totalMovie, 1, "Số movie không đủ");
     }
 
     @Test()
-    public void shouldDisplayMovieCard() {
+    public void testDisplayMovieCard() {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(homePage.isMovieCardDisplay(), "Movie card did not display");
         softAssert.assertTrue(homePage.isMoviePosterDisplay(), "Movie poster did not display");

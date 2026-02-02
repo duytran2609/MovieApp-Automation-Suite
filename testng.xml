@@ -20,13 +20,13 @@
 <!--            <class name="tests.login.LoginUITest"/>-->
 <!--            <class name="tests.logout.LogoutTest"/>-->
 <!--            <class name="tests.movie.MovieTest"/>-->
-<!--            <class name="tests.login.ForgetPasswordTest"/>-->
+<!--            <class name="tests.login.ForgetPassword"/>-->
 <!--            <class name="tests.register.RegisterTest"/>-->
-<!--            <class name="tests.movie.GetHomeMovieTest"/>-->
-<!--            <class name="tests.movie.GetMovieListTest"/>-->
-<!--            <class name="tests.movie.SeeMovieDetailsTest"/>-->
+<!--            <class name="tests.movie.GetHomeMovie"/>-->
+<!--            <class name="tests.movie.GetMovieList"/>-->
+<!--            <class name="tests.movie.SeeMovieDetails"/>-->
 <!--            <class name="tests.movie.SearchMovie"/>-->
-            <class name="tests.movie.GetMovieByCategory"/>
+            <class name="tests.movie.GetMovieByType"/>
 
 
 
