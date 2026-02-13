@@ -9,7 +9,7 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.MovieDetailsPage;
 import pages.MoviePage;
-import tests.driver.DriverManager;
+import driver.DriverManager;
 
 public class WatchMovieTest extends BaseTest {
 
@@ -22,7 +22,7 @@ public class WatchMovieTest extends BaseTest {
     @BeforeMethod
     public void setUpSeeMovieDetailsTest() {
         DriverManager.getDriver().get("https://movie-project-front-end.vercel.app/login");
-        loginPage = new LoginPage(DriverManager.getDriver());
+        loginPage = new LoginPage();
         homePage = loginPage.login("trandangduy13@gmail.com", "xanhlacay1");
     }
 

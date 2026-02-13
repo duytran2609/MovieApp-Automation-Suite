@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.MoviePage;
-import tests.driver.DriverManager;
+import driver.DriverManager;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class SearchMovieTest extends BaseTest {
     @BeforeMethod
     public void setUpSearchMovieTest() {
         DriverManager.getDriver().get("https://movie-project-front-end.vercel.app/login");
-        loginPage = new LoginPage(DriverManager.getDriver());
+        loginPage = new LoginPage();
         homePage = loginPage.login("trandangduy13@gmail.com", "xanhlacay1");
         moviePage = homePage.headerComponent.navigateToMoviePage();
     }
@@ -48,7 +48,7 @@ public class SearchMovieTest extends BaseTest {
         String keyword = " leg";
         moviePage.searchMovie(keyword);
         Assert.assertTrue(moviePage.getAllMovieTitles().size() > 0
-                , "Search with whitt space did not find any movies"
+                , "Search with whitt space did not findVisible any movies"
         );
     }
 

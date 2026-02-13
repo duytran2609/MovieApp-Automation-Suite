@@ -18,11 +18,6 @@ public class LoginPage extends BasePage {
     // ===== PAGE OBJECTS =====
     private HomePage homePage;
 
-    // ===== CONSTRUCTOR =====
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
     // ===== ACTIONS =====
     public HomePage login(String email, String password) {
         try {
@@ -41,7 +36,7 @@ public class LoginPage extends BasePage {
         } catch(Exception e) {
             log.error("Cannot navigate to forget password page");
         }
-        return new ForgetPasswordPage(driver);
+        return new ForgetPasswordPage();
     }
 
     public RegisterPage register() {
@@ -50,7 +45,7 @@ public class LoginPage extends BasePage {
         } catch(Exception e) {
             log.error("Cannot navigate to register page");
         }
-        return new RegisterPage(driver);
+        return new RegisterPage();
     }
 
     // ===== GETTERS / STATES =====

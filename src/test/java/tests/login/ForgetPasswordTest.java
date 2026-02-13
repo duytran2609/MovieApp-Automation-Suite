@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.ForgetPasswordPage;
 import pages.LoginPage;
-import tests.driver.DriverManager;
+import driver.DriverManager;
 
 public class ForgetPasswordTest extends BaseTest {
 
@@ -16,16 +16,20 @@ public class ForgetPasswordTest extends BaseTest {
 
     @BeforeMethod
     public void setUpForgetPasswordTest() {
+        log.info("=== Setup ForgetPasswordTest ===");
         log.info("Open login page");
         DriverManager.getDriver().get("https://movie-project-front-end.vercel.app/login");
-        loginPage = new LoginPage(DriverManager.getDriver());
+        log.info("Init LoginPage");
+        loginPage = new LoginPage();
+        log.info("Click Forget Password link");
         loginPage.forgetPassword();
-        forgetPasswordPage = new ForgetPasswordPage(DriverManager.getDriver());
+        log.info("Init ForgetPasswordPage");
+        forgetPasswordPage = new ForgetPasswordPage();
     }
 
     @DataProvider(name = "emailData")
     public Object[][] emailData() {
-        return new Object[][] {
+        return new Object[][]{
                 {"trandangduy13@gmail.com"},
                 {"abc@gmail.com"},
                 {"abc"},
@@ -35,15 +39,25 @@ public class ForgetPasswordTest extends BaseTest {
 
     @Test
     public void shouldResetPasswordSuccessfullyWhenEmailIsValid() {
+        log.info("Start TC_ForgetPasswordTest_001 - Reset Password Successfully When Email Is Valid");
+        log.info("Input valid email");
         forgetPasswordPage.inputEmail("trandangduy13@gmail.com");
+        log.info("Click Send button");
         forgetPasswordPage.clickSendButton();
-        Assert.assertTrue(forgetPasswordPage.isSendSuccess(), "Submit button vẫn còn hiển thị, request có thể chưa gửi thành công");
+        log.info("Verify reset password request is successful");
+        Assert.assertTrue(forgetPasswordPage.isSendSuccess(), "Submit button still exists"
+        );
+        log.info("End TC_ForgetPasswordTest_001 - COMPLETED");
     }
 
-    @Test(dataProvider = "emailData", dependsOnMethods = {"testInputValidEmail"})
+    @Test(dataProvider = "emailData")
     public void shouldFailToResetPasswordWhenEmailIsInvalid(String email) {
+        log.info("Start TC_ForgetPasswordTest_002 - Fail To Reset Password When Email Is Invalid | Email: {}", email);
         forgetPasswordPage.inputEmail(email);
+        log.info("Click Send button");
         forgetPasswordPage.clickSendButton();
-        Assert.assertTrue(forgetPasswordPage.isSendSuccess(), "Submit button vẫn còn hiển thị, request có thể chưa gửi thành công");
+        log.info("Verify system handles invalid email");
+        Assert.assertTrue(forgetPasswordPage.isSendSuccess(), "Submit button still exists");
+        log.info("End TC_ForgetPasswordTest_002 - COMPLETED");
     }
 }

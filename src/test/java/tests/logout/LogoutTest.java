@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.MoviePage;
-import tests.driver.DriverManager;
+import driver.DriverManager;
 
 public class LogoutTest extends BaseTest {
 
@@ -20,9 +20,9 @@ public class LogoutTest extends BaseTest {
     @BeforeMethod
     public void setUpLogoutTest() {
         DriverManager.getDriver().get("https://movie-project-front-end.vercel.app/login");
-        loginPage = new LoginPage(DriverManager.getDriver());
+        loginPage = new LoginPage();
         homePage = loginPage.login("trandangduy13@gmail.com", "xanhlacay1");
-        headerComponent = new HeaderComponent(DriverManager.getDriver());
+        headerComponent = new HeaderComponent();
     }
 
     @Test
@@ -40,7 +40,7 @@ public class LogoutTest extends BaseTest {
     @Test
     public void testLogoutFromMoviePage() {
         homePage.headerComponent.navigateToMoviePage();
-        moviePage = new MoviePage(DriverManager.getDriver());
+        moviePage = new MoviePage();
         if (moviePage.headerComponent.isLogoutActive()) {
             try {
                 moviePage.headerComponent.logout();

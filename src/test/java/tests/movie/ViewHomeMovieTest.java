@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.HomePage;
 import pages.LoginPage;
-import tests.driver.DriverManager;
+import driver.DriverManager;
 
 public class ViewHomeMovieTest extends BaseTest {
     private LoginPage loginPage;
@@ -16,7 +16,7 @@ public class ViewHomeMovieTest extends BaseTest {
     @BeforeMethod
     public void setUpGetHomeMovieTest() {
         DriverManager.getDriver().get("https://movie-project-front-end.vercel.app/login");
-        loginPage = new LoginPage(DriverManager.getDriver());
+        loginPage = new LoginPage();
         homePage = loginPage.login("trandangduy13@gmail.com", "xanhlacay1");
     }
 

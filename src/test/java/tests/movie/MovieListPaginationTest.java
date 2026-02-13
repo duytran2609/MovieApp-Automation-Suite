@@ -12,11 +12,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.MoviePage;
-import tests.driver.DriverManager;
+import driver.DriverManager;
 
 import java.time.Duration;
 import java.util.List;
@@ -32,7 +31,7 @@ public class MovieListPaginationTest extends BaseTest {
     public void setUpClearMovieListFilterTest() {
         WebDriver driver = DriverManager.getDriver();
         driver.get("https://movie-project-front-end.vercel.app/login");
-        loginPage = new LoginPage(DriverManager.getDriver());
+        loginPage = new LoginPage();
         homePage = loginPage.login("trandangduy13@gmail.com", "xanhlacay1");
         moviePage = homePage.headerComponent.navigateToMoviePage();
     }

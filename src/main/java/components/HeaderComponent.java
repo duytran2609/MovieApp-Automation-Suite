@@ -25,11 +25,6 @@ public class HeaderComponent extends BasePage {
     private LoginPage loginPage;
     private MovieDetailsPage movieDetailsPage;
 
-    // ===== CONSTRUCTOR =====
-    public HeaderComponent(WebDriver driver) {
-        super(driver);
-    }
-
     // ===== ACTIONS =====
     public HomePage navigateToHomePage() {
         click(txtHome);
@@ -38,7 +33,7 @@ public class HeaderComponent extends BasePage {
 
     public MoviePage navigateToMoviePage() {
         click(txtMovie);
-        return new MoviePage(driver);
+        return new MoviePage();
     }
 
     public void logout() {
@@ -85,7 +80,7 @@ public class HeaderComponent extends BasePage {
     }
 
     public boolean isNavigateToMoviePageSuccess() {
-        moviePage = new MoviePage(driver);
+        moviePage = new MoviePage();
         boolean isMoviePageUrl = driver.getCurrentUrl()
                 .toLowerCase()
                 .endsWith("movies");

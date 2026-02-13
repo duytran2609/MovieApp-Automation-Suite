@@ -40,12 +40,6 @@ public class MoviePage extends BasePage {
     public HomePage homePage;
     public MovieDetailsPage movieDetailsPage;
 
-    // ===== CONSTRUCTOR =====
-    public MoviePage(WebDriver driver) {
-        super(driver);
-        headerComponent = new HeaderComponent(driver);
-    }
-
     // ===== ACTIONS =====
     public void searchMovie(String keyword) {
         type(iptMovie, keyword);
@@ -53,7 +47,7 @@ public class MoviePage extends BasePage {
 
     public MovieDetailsPage navigateToMovieDetailsPage() {
         click(crdMovies);
-        return new MovieDetailsPage(driver);
+        return new MovieDetailsPage();
     }
 
     public void selectType(String type) {
@@ -182,11 +176,11 @@ public class MoviePage extends BasePage {
     }
 
     public String getInputText() {
-        return find(iptMovie).getText();
+        return findVisible(iptMovie).getText();
     }
 
     public String getNoMovieFoundMessage() {
-        return isDisplayed(txtNoMovieFound) ? find(txtNoMovieFound).getText() : "";
+        return isDisplayed(txtNoMovieFound) ? findVisible(txtNoMovieFound).getText() : "";
     }
 
     public List<String> getAllMovieTitles() {
@@ -212,7 +206,7 @@ public class MoviePage extends BasePage {
     }
 
     public String getMovieInput() {
-        return find(iptMovie).getText();
+        return findVisible(iptMovie).getText();
     }
 
     public String getMovieTypeSelected() {

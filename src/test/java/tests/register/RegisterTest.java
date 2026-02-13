@@ -1,7 +1,6 @@
 package tests.register;
 
 import base.BaseTest;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -9,7 +8,7 @@ import org.testng.annotations.Test;
 import pages.ForgetPasswordPage;
 import pages.LoginPage;
 import pages.RegisterPage;
-import tests.driver.DriverManager;
+import driver.DriverManager;
 
 public class RegisterTest extends BaseTest {
 
@@ -21,9 +20,9 @@ public class RegisterTest extends BaseTest {
     public void setUpFlow() {
         log.info("Open login page");
         DriverManager.getDriver().get("https://movie-project-front-end.vercel.app/login");
-        loginPage = new LoginPage(DriverManager.getDriver());
+        loginPage = new LoginPage();
         loginPage.register();
-        registerPage = new RegisterPage(DriverManager.getDriver());
+        registerPage = new RegisterPage();
     }
 
     @DataProvider(name = "invalidUsernameData")

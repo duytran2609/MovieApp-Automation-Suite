@@ -12,11 +12,6 @@ public class ForgetPasswordPage extends BasePage {
     private By btnSubmit = By.className("forgot-password-btn");
     private By txtBackLogin = By.xpath("//*[@id=\"root\"]/div/div/div/div/p");
 
-    // ===== CONSTRUCTOR =====
-    public ForgetPasswordPage(WebDriver driver) {
-        super(driver);
-    }
-
     // ===== ACTIONS =====
     public void inputEmail(String email) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(inputEmail)).clear();

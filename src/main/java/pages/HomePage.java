@@ -28,25 +28,24 @@ public class HomePage extends BasePage {
 
     // ===== CONSTRUCTOR =====
     public HomePage(WebDriver driver) {
-        super(driver);
-        headerComponent = new HeaderComponent(driver);
+        headerComponent = new HeaderComponent();
         wait.until(ExpectedConditions.presenceOfElementLocated(crdMovie));
     }
 
     // ===== ACTIONS =====
     public MoviePage navigateToMoviePageByExploreText() {
         click(txtExplore);
-        return new MoviePage(driver);
+        return new MoviePage();
     }
 
     public MoviePage navigateToMoviePageByViewAllText() {
         click(txtViewAll);
-        return new MoviePage(driver);
+        return new MoviePage();
     }
 
     public MovieDetailsPage navigateToMovieDetailsPage() {
         click(crdMovie);
-        return new MovieDetailsPage(driver);
+        return new MovieDetailsPage();
     }
 
     // ===== GETTERS / STATES =====
@@ -93,7 +92,7 @@ public class HomePage extends BasePage {
 
     // ===== HIGH-LEVEL / BUSINESS METHODS =====
     public boolean isNavigateToMoviePage() {
-        moviePage = new MoviePage(driver);
+        moviePage = new MoviePage();
         boolean isMoviePageUrl = driver.getCurrentUrl()
                 .toLowerCase()
                 .endsWith("movies");

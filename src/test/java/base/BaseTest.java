@@ -1,17 +1,13 @@
 package base;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.bidi.log.Log;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeSuite;
-import tests.driver.DriverManager;
+import driver.DriverManager;
+import utils.ConfigReader;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,9 +25,8 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         log.info("Start browser");
-        WebDriver driver = new ChromeDriver();
-        DriverManager.setDriver(driver);
-        driver.manage().window().maximize();
+        DriverManager.initDriver(ConfigReader.get("browser"));
+        DriverManager.getDriver().get(ConfigReader.get("baseUrl"));
     }
 
     @AfterMethod

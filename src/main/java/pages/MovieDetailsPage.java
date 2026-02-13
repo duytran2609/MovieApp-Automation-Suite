@@ -12,12 +12,6 @@ public class MovieDetailsPage extends BasePage {
     // ===== COMPONENTS =====
     public HeaderComponent headerComponent;
 
-    // ===== CONSTRUCTOR =====
-    public MovieDetailsPage(WebDriver driver) {
-        super(driver);
-        headerComponent = new HeaderComponent(driver);
-    }
-
     // ===== ACTIONS =====
     // (chưa có)
 

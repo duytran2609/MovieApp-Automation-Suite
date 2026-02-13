@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.*;
-import tests.driver.DriverManager;
+import driver.DriverManager;
 import utils.ScreenshotUtils;
 
 public class TestListener implements ITestListener {

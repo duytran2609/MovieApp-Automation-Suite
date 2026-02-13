@@ -20,11 +20,6 @@ public class RegisterPage extends BasePage {
     // ===== PAGE OBJECTS =====
     private LoginPage loginPage;
 
-    // ===== CONSTRUCTOR =====
-    public RegisterPage(WebDriver driver) {
-        super(driver);
-    }
-
     // ===== ACTIONS =====
     public void inputUsername(String username) {
         log.trace("Input username: [{}]", username);
@@ -52,19 +47,19 @@ public class RegisterPage extends BasePage {
     // ===== GETTERS / STATES =====
     public boolean isUsernameValid() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement e = find(inputUsername);
+        WebElement e = findVisible(inputUsername);
         return (Boolean) js.executeScript("return arguments[0].checkValidity();", e);
     }
 
     public boolean isEmailValid() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement e = find(inputEmail);
+        WebElement e = findVisible(inputEmail);
         return (Boolean) js.executeScript("return arguments[0].checkValidity();", e);
     }
 
     public boolean isPasswordValid() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement e = find(inputPassword);
+        WebElement e = findVisible(inputPassword);
         return (Boolean) js.executeScript("return arguments[0].checkValidity();", e);
     }
 
@@ -75,7 +70,7 @@ public class RegisterPage extends BasePage {
     }
 
     public String getExistingDataErrorMessage() {
-        return find(msgError).getText();
+        return findVisible(msgError).getText();
     }
 
     // ===== HIGH-LEVEL / BUSINESS =====
