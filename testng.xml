@@ -20,7 +20,7 @@
 <!--            <class name="tests.login.LoginUITest"/>-->
 <!--            <class name="tests.logout.LogoutTest"/>-->
 <!--            <class name="tests.movie.MovieTest"/>-->
-<!--            <class name="tests.login.ForgetPasswordTest"/>-->
+            <class name="tests.login.ForgetPasswordTest"/>
 <!--            <class name="tests.register.RegisterTest"/>-->
 <!--            <class name="tests.movie.ViewHomeMovieTest"/>-->
 <!--            <class name="tests.movie.ViewMovieListTest"/>-->
@@ -28,7 +28,7 @@
 <!--            <class name="tests.movie.SearchMovieTest"/>-->
 <!--            <class name="tests.movie.FilterMovieByTypeTest"/>-->
 <!--            <class name="tests.movie.ClearMovieListFilterTest"/>-->
-            <class name="tests.movie.MovieListPaginationTest"/>
+<!--            <class name="tests.movie.MovieListPaginationTest"/>-->
 
 
 

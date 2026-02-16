@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import pages.ForgetPasswordPage;
 import pages.LoginPage;
 import driver.DriverManager;
+import utils.CSVUtils;
 
 public class ForgetPasswordTest extends BaseTest {
 
@@ -28,14 +29,10 @@ public class ForgetPasswordTest extends BaseTest {
     }
 
     @DataProvider(name = "emailData")
-    public Object[][] emailData() {
-        return new Object[][]{
-                {"trandangduy13@gmail.com"},
-                {"abc@gmail.com"},
-                {"abc"},
-                {""},
-        };
+    public Object[][] emailData() throws Exception {
+        return CSVUtils.getData("src/test/resources/emailData.csv");
     }
+
 
     @Test
     public void shouldResetPasswordSuccessfullyWhenEmailIsValid() {
