@@ -138,7 +138,7 @@ src
 
 ## 👨‍💻 Author
 
-**Trần Đăng Duy**  
+**Tran Dang Duy**  
 Automation Testing Learner | Aspiring QA Engineer  
 
 This project is part of my personal portfolio to demonstrate my practical skills and learning progress in test automation.
